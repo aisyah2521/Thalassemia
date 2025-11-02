@@ -129,19 +129,25 @@ st.title('Gender Distribution Visualization')
 # Call the function to display the plot
 plot_gender_distribution(df)
 
+import streamlit as st
+import matplotlib.pyplot as plt
 
 st.title("Distribution of Frequency of Blood Transfusion")
 
-# Check column before plotting
-if 'Frequency_of_Blood_Transfusion' in df.columns:
-    fig, ax = plt.subplots(figsize=(10, 6))
-    df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
-    ax.set_title('Distribution of Frequency of Blood Transfusion')
-    ax.set_xlabel('Frequency of Blood Transfusion')
-    ax.set_ylabel('Count')
-    ax.tick_params(axis='x', rotation=45)
-    fig.tight_layout()
-    st.pyplot(fig)
-else:
-    st.error("Column 'Frequency_of_Blood_Transfusion' not found in the dataset.")
-    st.write("Available columns:", df.columns.tolist())
+# Create a Matplotlib figure and axis
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot the bar chart
+df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
+
+# Set titles and labels
+ax.set_title('Distribution of Frequency of Blood Transfusion')
+ax.set_xlabel('Frequency of Blood Transfusion')
+ax.set_ylabel('Count')
+ax.tick_params(axis='x', rotation=45)
+
+# Adjust layout and display in Streamlit
+fig.tight_layout()
+st.pyplot(fig)
+
+
