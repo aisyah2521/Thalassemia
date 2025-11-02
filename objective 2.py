@@ -66,6 +66,19 @@ st.pyplot(fig)
   illustrating the distribution of the Physical Health Summary Score.
   """
 
+fig, ax = plt.subplots(figsize=(8, 6))
+sns.violinplot(x='Type_of_Family_Nuclear', y='Total_SF_Score', data=df_encoded, ax=ax)
+ax.set_title('Distribution of Total SF Score by Type of Family (Nuclear)')
+ax.set_xlabel('Type of Family (Nuclear)')
+ax.set_ylabel('Total SF Score')
+
+st.pyplot(fig)
+
+"""
+  **Figure 2** This graph is a **Box Plot** title "Distribution of Mental Health Summary by Diagnosis."it
+  compares the spread and central tendency of a Mental Health Summary Score across four different diagnostic groups.
+  """
+
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.boxplot(x='Diagnosis', y='Mental_Health_Summary', data=df, ax=ax)
 ax.set_title('Distribution of Mental Health Summary by Diagnosis')
@@ -77,6 +90,6 @@ plt.tight_layout()
 st.pyplot(fig)
 
 """
-  **Figure 2** This graph is a **Box Plot** title "Distribution of Mental Health Summary by Diagnosis."it
+  **Figure 3** This graph is a **Box Plot** title "Distribution of Mental Health Summary by Diagnosis."it
   compares the spread and central tendency of a Mental Health Summary Score across four different diagnostic groups.
   """
