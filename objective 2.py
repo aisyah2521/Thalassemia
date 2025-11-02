@@ -62,8 +62,8 @@ ax.set_ylabel('Density')
 st.pyplot(fig)
 
 """
-  **Figure 1** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
-  the validated SF-36 (Short Form Health Survey) questionnaire.
+  **Figure 1** This graph is a **Density Plot** also knows as a Kernel Density Estimate or KDE plot
+  illustrating the distribution of the Physical Health Summary Score.
   """
 
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -76,4 +76,7 @@ plt.tight_layout()
 
 st.pyplot(fig)
 
-
+"""
+  **Figure 2** This graph is a **Box Plot** title "Distribution of Mental Health Summary by Diagnosis."it
+  compares the spread and central tendency of a Mental Health Summary Score across four different diagnostic groups.
+  """
