@@ -81,9 +81,8 @@ st.pyplot(fig)
 
 
 """
-  **Figure 2** This graph is a **Violin Plot** titled "Distribution of Total SF by Type of Family (Nuclear).
-  "It compares the distribution of the Total SF Score (likely a summary function ore health score) 
-  for two groups: participants who are not in a nuclear family (False) and those who are in a nuclear family(True).
+  **Figure 2** This graph is a **Violin Plot** titled "Distribution of Social Functioning by Occupational
+  status." It compares the distribution of the Social Functioning Score across six different occupational groups.
   """ 
 
 fig, ax = plt.subplots(figsize=(10, 6))
