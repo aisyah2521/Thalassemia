@@ -53,30 +53,19 @@ if not df.empty:
 else:
     st.error("The DataFrame is empty. Please check the URL or file format.")
 
-fig, ax = plt.subplots(figsize=(8, 6))
-sns.kdeplot(df['Physical_Health_Summary'].dropna(), fill=True, ax=ax)
-ax.set_title('Density Plot of Physical Health Summary')
-ax.set_xlabel('Physical Health Summary Score')
-ax.set_ylabel('Density')
+
+diagnosis_counts = df['Diagnosis'].value_counts()
+
+fig, ax = plt.subplots(figsize=(8, 8))
+ax.pie(
+    diagnosis_counts,
+    labels=diagnosis_counts.index,
+    autopct='%1.1f%%',
+    startangle=90,
+    wedgeprops={'width': 0.3}
+)
+ax.set_title('Distribution of Diagnosis', pad=20.0)
+ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
 
 st.pyplot(fig)
 
-"""
-  **Figure 1** This graph is a **Density Plot** also knows as a Kernel Density Estimate or KDE plot
-  illustrating the distribution of the Physical Health Summary Score.
-  """
-
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.boxplot(x='Diagnosis', y='Mental_Health_Summary', data=df, ax=ax)
-ax.set_title('Distribution of Mental Health Summary by Diagnosis')
-ax.set_xlabel('Diagnosis')
-ax.set_ylabel('Mental Health Summary')
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
-plt.tight_layout()
-
-st.pyplot(fig)
-
-"""
-  **Figure 2** This graph is a **Box Plot** title "Distribution of Mental Health Summary by Diagnosis."it
-  compares the spread and central tendency of a Mental Health Summary Score across four different diagnostic groups.
-  """
