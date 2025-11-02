@@ -85,7 +85,6 @@ st.pyplot(fig)
   **Figure 2** This graph is a **pie chart** title "Distribution Of Gender."
   """
 
-
 fig, ax = plt.subplots(figsize=(10, 6))
 df['Frequency_of_Blood_Transfusion'].value_counts().plot(
     kind='bar', edgecolor='black', ax=ax
