@@ -1,153 +1,111 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
 
-st.set_page_config(
-  page_title="Objective 1"
-)
+# -------------------------------------------------------
+# 🎯 PAGE CONFIGURATION
+# -------------------------------------------------------
+st.set_page_config(page_title="Objective 1", layout="centered")
 st.header("Objective 1", divider="gray")
 
-
-# The raw GitHub URL for the CSV file
+# -------------------------------------------------------
+# 💾 LOAD DATA (CACHED)
+# -------------------------------------------------------
 DATA_URL = "https://raw.githubusercontent.com/aisyah2521/Thalassemia/refs/heads/main/cleaned_thalassemia_qol_data.csv"
 
-## 💾 Load and Cache Data
-# Use st.cache_data to load the data only once.
-# This improves performance by avoiding re-downloading the file on every interaction.
 @st.cache_data
 def load_data(url):
-    """Loads the CSV data from a URL into a Pandas DataFrame."""
     try:
         data = pd.read_csv(url)
         return data
     except Exception as e:
         st.error(f"Error loading data: {e}")
-        return pd.DataFrame() # Return an empty DataFrame on error
+        return pd.DataFrame()
 
-# Call the function to load the data
 df = load_data(DATA_URL)
 
-## 📊 Streamlit App Layout
-st.title("🩸 Thalassemia Quality of Life Data")
-st.subheader("Data Loaded from GitHub")
-
+# -------------------------------------------------------
+# 📊 DISPLAY DATA
+# -------------------------------------------------------
 if not df.empty:
-    st.write(f"Successfully loaded {len(df)} rows and {len(df.columns)} columns.")
-    
-    # Display the DataFrame in an interactive table
+    st.success(f"Successfully loaded {len(df)} rows and {len(df.columns)} columns.")
     st.dataframe(df)
-
-    # Display some basic information
-    st.markdown("---")
-    st.subheader("Quick Data Information")
-    st.text(f"Column Names and Data Types:")
-    st.write(df.dtypes)
 else:
-    st.error("The DataFrame is empty. Please check the URL or file format.")
+    st.stop()
 
+st.markdown("---")
+st.subheader("Quick Data Information")
+st.write(df.dtypes)
 
-# --- 🧪 Example DataFrame creation (Replace this with your actual data loading) ---
-# This creates a dummy DataFrame for demonstration since the original code relies on 'df'
-import numpy as np
-np.random.seed(42)
-data = {'Age_of_Participants': np.random.randint(18, 65, size=100)}
-df = pd.DataFrame(data)
-# -----------------------------------------------------------------------------------
+# -------------------------------------------------------
+# 📖 INTRODUCTION
+# -------------------------------------------------------
+st.markdown("""
+**Scientific Visualization** transforms complex scientific data into visual forms
+that are easier to understand, interpret, and communicate.
+It helps researchers explore datasets, identify hidden patterns, and gain insights
+that would otherwise remain obscure in numerical form.
+""")
 
-# Add the main introduction paragraph
-st.write(
-  """
-  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
-scientific data into visual forms that are easier to understand, interpret, and communicate.
-  Through the use of computational techniques, visualization helps researchers explore datasets,
-identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
-  """
-)
+# -------------------------------------------------------
+# 📈 VISUALIZATION FUNCTIONS
+# -------------------------------------------------------
+def plot_age_distribution(data):
+    if 'Age_of_Participants' in data.columns:
+        fig, ax = plt.subplots(figsize=(8, 6))
+        ax.hist(data['Age_of_Participants'], bins=20, edgecolor='black')
+        ax.set_title('Distribution of Age of Participants')
+        ax.set_xlabel('Age')
+        ax.set_ylabel('Frequency')
+        st.pyplot(fig)
+    else:
+        st.warning("Column 'Age_of_Participants' not found in dataset.")
 
-def plot_age_distribution(data_frame):
-    """Generates and displays the age distribution histogram in Streamlit."""
-    
-    # Create the Matplotlib figure and axes
-    fig, ax = plt.subplots(figsize=(8, 6))
+def plot_gender_distribution(data):
+    if 'Gender' in data.columns:
+        gender_counts = data['Gender'].value_counts()
+        fig, ax = plt.subplots(figsize=(8, 8))
+        ax.pie(gender_counts, labels=gender_counts.index, autopct='%1.1f%%', startangle=90)
+        ax.set_title('Distribution of Gender')
+        ax.axis('equal')
+        st.pyplot(fig)
+    else:
+        st.warning("Column 'Gender' not found in dataset.")
 
-    # Generate the histogram on the axes
-    ax.hist(data_frame['Age_of_Participants'], bins=20, edgecolor='black')
+def plot_transfusion_frequency(data):
+    if 'Frequency_of_Blood_Transfusion' in data.columns:
+        counts = data['Frequency_of_Blood_Transfusion'].value_counts()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.bar(counts.index, counts.values, edgecolor='black')
+        ax.set_title('Distribution of Frequency of Blood Transfusion')
+        ax.set_xlabel('Frequency of Blood Transfusion')
+        ax.set_ylabel('Count')
+        ax.tick_params(axis='x', rotation=45)
+        fig.tight_layout()
+        st.pyplot(fig)
+    else:
+        st.warning("Column 'Frequency_of_Blood_Transfusion' not found in dataset.")
 
-    # Set the title and labels
-    ax.set_title('Distribution of Age of Participants')
-    ax.set_xlabel('Age')
-    ax.set_ylabel('Frequency')
-    
-    # Display the figure using st.pyplot()
-    st.pyplot(fig)
+# -------------------------------------------------------
+# 🧭 SIDEBAR NAVIGATION
+# -------------------------------------------------------
+st.sidebar.title("📊 Choose Visualization")
+options = ["Age Distribution", "Gender Distribution", "Blood Transfusion Frequency"]
+choice = st.sidebar.radio("Select a chart to display:", options)
 
-# --- 🚀 Streamlit App Execution ---
-st.title('Participant Age Data Visualization')
+# -------------------------------------------------------
+# 🚀 DISPLAY SELECTED VISUALIZATION
+# -------------------------------------------------------
+if choice == "Age Distribution":
+    st.title("Participant Age Data Visualization")
+    plot_age_distribution(df)
 
-# Call the function to display the plot
-plot_age_distribution(df)
+elif choice == "Gender Distribution":
+    st.title("Gender Distribution Visualization")
+    plot_gender_distribution(df)
 
-
-# --- 🧪 Example DataFrame creation (Replace this with your actual data loading) ---
-# This creates a dummy DataFrame for demonstration since the original code relies on 'df'
-np.random.seed(42)
-data = {'Gender': np.random.choice(['Male', 'Female',], size=100, p=[0.55, 0.45])}
-df = pd.DataFrame(data)
-# -----------------------------------------------------------------------------------
-
-def plot_gender_distribution(data_frame):
-    """Generates and displays the gender distribution pie chart in Streamlit."""
-    
-    # 1. Calculate the counts (same as your original code)
-    gender_counts = data_frame['Gender'].value_counts()
-    
-    # 2. Create the Matplotlib figure and axes
-    # We use subplots() to explicitly define the figure (fig)
-    fig, ax = plt.subplots(figsize=(8, 8)) 
-
-    # 3. Generate the pie chart on the axes (ax)
-    ax.pie(
-        gender_counts, 
-        labels=gender_counts.index, 
-        autopct='%1.1f%%', 
-        startangle=90, 
-        colors=['skyblue', 'lightcoral', 'lightgreen'] # Added a third color for 'Other'
-    )
-    
-    # 4. Set the title and ensure it's a circle
-    ax.set_title('Distribution of Gender')
-    ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    
-    # 5. Display the figure using st.pyplot()
-    st.pyplot(fig)
-
-# --- 🚀 Streamlit App Execution ---
-st.title('Gender Distribution Visualization')
-
-# Call the function to display the plot
-plot_gender_distribution(df)
-
-import streamlit as st
-import matplotlib.pyplot as plt
-
-st.title("Distribution of Frequency of Blood Transfusion")
-
-# Create a Matplotlib figure and axis
-fig, ax = plt.subplots(figsize=(10, 6))
-
-# Plot the bar chart
-df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
-
-# Set titles and labels
-ax.set_title('Distribution of Frequency of Blood Transfusion')
-ax.set_xlabel('Frequency of Blood Transfusion')
-ax.set_ylabel('Count')
-ax.tick_params(axis='x', rotation=45)
-
-# Adjust layout and display in Streamlit
-fig.tight_layout()
-st.pyplot(fig)
+elif choice == "Blood Transfusion Frequency":
+    st.title("Blood Transfusion Frequency Analysis")
+    plot_transfusion_frequency(df)
 
 
