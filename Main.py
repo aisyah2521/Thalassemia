@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 st.set_page_config(
@@ -46,3 +47,33 @@ else:
     st.error("The DataFrame is empty. Please check the URL or file format.")
 
 
+# --- 🧪 Example DataFrame creation (Replace this with your actual data loading) ---
+# This creates a dummy DataFrame for demonstration since the original code relies on 'df'
+import numpy as np
+np.random.seed(42)
+data = {'Age_of_Participants': np.random.randint(18, 65, size=100)}
+df = pd.DataFrame(data)
+# -----------------------------------------------------------------------------------
+
+def plot_age_distribution(data_frame):
+    """Generates and displays the age distribution histogram in Streamlit."""
+    
+    # Create the Matplotlib figure and axes
+    fig, ax = plt.subplots(figsize=(8, 6))
+
+    # Generate the histogram on the axes
+    ax.hist(data_frame['Age_of_Participants'], bins=20, edgecolor='black')
+
+    # Set the title and labels
+    ax.set_title('Distribution of Age of Participants')
+    ax.set_xlabel('Age')
+    ax.set_ylabel('Frequency')
+    
+    # Display the figure using st.pyplot()
+    st.pyplot(fig)
+
+# --- 🚀 Streamlit App Execution ---
+st.title('Participant Age Data Visualization')
+
+# Call the function to display the plot
+plot_age_distribution(df)
