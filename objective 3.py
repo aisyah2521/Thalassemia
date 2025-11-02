@@ -87,3 +87,16 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidt
 ax.set_title('Correlation Matrix of Numerical Variables')
 
 st.pyplot(fig)
+
+"""
+  **Figure 2** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
+  the validated SF-36 (Short Form Health Survey) questionnaire.
+  """
+
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.scatter(df['Physical_Health_Summary'], df['Mental_Health_Summary'], alpha=0.5)
+ax.set_title('Physical Health Summary vs Mental Health Summary (Scatter Plot)')
+ax.set_xlabel('Physical Health Summary')
+ax.set_ylabel('Mental Health Summary')
+
+st.pyplot(fig)
