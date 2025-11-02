@@ -93,7 +93,7 @@ plot_age_distribution(df)
 # --- 🧪 Example DataFrame creation (Replace this with your actual data loading) ---
 # This creates a dummy DataFrame for demonstration since the original code relies on 'df'
 np.random.seed(42)
-data = {'Gender': np.random.choice(['Male', 'Female', 'Other'], size=100, p=[0.45, 0.50, 0.05])}
+data = {'Gender': np.random.choice(['Male', 'Female',], size=100, p=[45.8, 54.2])}
 df = pd.DataFrame(data)
 # -----------------------------------------------------------------------------------
 
