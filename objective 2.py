@@ -67,7 +67,7 @@ st.pyplot(fig)
   """
 
 fig, ax = plt.subplots(figsize=(8, 6))
-sns.violinplot(x='Type_of_Family_Nuclear', y='Total_SF_Score', data=df_encoded, ax=ax)
+sns.violinplot(x='Type_of_Family_Nuclear', y='Total_SF_Score', data=df, ax=ax)
 ax.set_title('Distribution of Total SF Score by Type of Family (Nuclear)')
 ax.set_xlabel('Type of Family (Nuclear)')
 ax.set_ylabel('Total SF Score')
