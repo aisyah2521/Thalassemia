@@ -70,8 +70,8 @@ ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
 st.pyplot(fig)
 
 """
-  **Figure 1** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
-  the validated SF-36 (Short Form Health Survey) questionnaire.
+  **Figure 1** This graph is a **Doughnut Chart** titled "Distribution of Diagnosis". it shows the
+  proportional breakdown of participants across four different diagnostic groups.
   """
 
 numerical_cols = [
@@ -89,8 +89,8 @@ ax.set_title('Correlation Matrix of Numerical Variables')
 st.pyplot(fig)
 
 """
-  **Figure 2** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
-  the validated SF-36 (Short Form Health Survey) questionnaire.
+  **Figure 2** This graph is a **Correlation Matrix** Heatmap that displays the correlation coefficients
+  between nine different numerical variables.
   """
 
 fig, ax = plt.subplots(figsize=(8, 6))
@@ -100,3 +100,8 @@ ax.set_xlabel('Physical Health Summary')
 ax.set_ylabel('Mental Health Summary')
 
 st.pyplot(fig)
+
+"""
+  **Figure 3** This graph is a **Scatter Plot** titled "Physical Health Summary vs Mental Health Summary."It plots individual data points
+  to visualize the relationship between two continuous variables.
+  """
