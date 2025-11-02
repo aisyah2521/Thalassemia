@@ -97,6 +97,6 @@ plt.tight_layout()
 st.pyplot(fig)
 
 """
-  **Figure 3** This graph is a **bar chart** title "Distribution Of Frequency Of Blood Transfusion.It compares
+  **Figure 3** This graph is a **bar chart** title "Distribution Of Frequency Of Blood Transfusion".It compares
   the number of participants (count) falling into three diffrent categories of transfusion frequency.
   """
