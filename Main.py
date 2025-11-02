@@ -69,3 +69,25 @@ scientific data into visual forms that are easier to understand, interpret, and 
 identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
   """
 
+gender_counts = df['Gender'].value_counts()
+
+fig, ax = plt.subplots(figsize=(8, 8))
+ax.pie(
+    gender_counts,
+    labels=gender_counts.index,
+    autopct='%1.1f%%',
+    startangle=90,
+    colors=['skyblue', 'lightcoral']
+)
+ax.set_title('Distribution of Gender')
+ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+st.pyplot(fig)
+
+"""
+  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
+scientific data into visual forms that are easier to understand, interpret, and communicate.
+  Through the use of computational techniques, visualization helps researchers explore datasets,
+identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  """
+
