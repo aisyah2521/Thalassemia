@@ -45,6 +45,9 @@ if not df.empty:
 else:
     st.error("The DataFrame is empty. Please check the URL or file format.")
 
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt 
 
 # The raw GitHub URL for the CSV file (from the previous context)
 DATA_URL = "https://raw.githubusercontent.com/aisyah2521/Thalassemia/refs/heads/main/cleaned_thalassemia_qol_data.csv"
