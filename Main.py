@@ -133,5 +133,22 @@ ax.axis('equal')  # Ensures the pie is drawn as a circle
 # Display the plot in Streamlit
 st.pyplot(fig)
 
+st.title("Distribution of Frequency of Blood Transfusion")
+
+# Create the Matplotlib figure and axis
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plot the bar chart
+df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
+
+# Set the chart title and labels
+ax.set_title('Distribution of Frequency of Blood Transfusion')
+ax.set_xlabel('Frequency of Blood Transfusion')
+ax.set_ylabel('Count')
+ax.tick_params(axis='x', rotation=45)
+
+# Adjust layout and render in Streamlit
+fig.tight_layout()
+st.pyplot(fig)
 
 
