@@ -130,27 +130,19 @@ st.title('Gender Distribution Visualization')
 plot_gender_distribution(df)
 
 
-# Example: assuming df is already loaded
-# df = your_dataframe
+# Assuming df is already loaded
+st.title("Distribution of Frequency of Blood Transfusion")
 
-st.subheader("💉 Distribution of Frequency of Blood Transfusion")
-
-# Create the Matplotlib figure
+# Create the figure
 fig, ax = plt.subplots(figsize=(10, 6))
-
-# Plot the bar chart
 df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
 
-# Set titles and labels
+# Customize the chart
 ax.set_title('Distribution of Frequency of Blood Transfusion')
 ax.set_xlabel('Frequency of Blood Transfusion')
 ax.set_ylabel('Count')
+ax.tick_params(axis='x', rotation=45)
 
-# Rotate x-axis labels
-plt.xticks(rotation=45, ha='right')
-
-# Adjust layout
-plt.tight_layout()
-
-# Display in Streamlit
+# Tight layout and display in Streamlit
+fig.tight_layout()
 st.pyplot(fig)
