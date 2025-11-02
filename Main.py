@@ -8,7 +8,7 @@ objective1 = st.Page('objective 1.py', title='Objective 1', icon=":material/scho
 
 objective2 = st.Page('objective 2.py', title='objective 2', default=True, icon=":material/home:")
 
-objective3 = st.Page('objective 3.py', title='objective 3', default=True, icon=":material/home:")
+objective3 = st.Page('objective 3.py', title='objective 3', icon=":material/home:")
 
 pg = st.navigation(
     {
