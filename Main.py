@@ -55,6 +55,16 @@ data = {'Age_of_Participants': np.random.randint(18, 65, size=100)}
 df = pd.DataFrame(data)
 # -----------------------------------------------------------------------------------
 
+# Add the main introduction paragraph
+st.write(
+  """
+  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
+scientific data into visual forms that are easier to understand, interpret, and communicate.
+  Through the use of computational techniques, visualization helps researchers explore datasets,
+identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  """
+)
+
 def plot_age_distribution(data_frame):
     """Generates and displays the age distribution histogram in Streamlit."""
     
