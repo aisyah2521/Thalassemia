@@ -4,13 +4,13 @@ st.set_page_config(
     page_title="Student Survey"
 )
 
-visualise = st.Page('objective 1.py', title='Pencapaian Akademik', icon=":material/school:")
+objective1 = st.Page('objective 1.py', title='Objective 1', icon=":material/school:")
 
-home = st.Page('objective 2.py', title='Homepage', default=True, icon=":material/home:")
+objective2 = st.Page('objective 2.py', title='objective 2', default=True, icon=":material/home:")
 
 pg = st.navigation(
     {
-        "Menu": [Objective, Objective comparison]
+        "Menu": [objective1, objective2]
     }
 )
 
