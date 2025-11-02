@@ -75,9 +75,10 @@ ax.set_ylabel('Total SF Score')
 st.pyplot(fig)
 
 """
-  **Figure 2** This graph is a **Box Plot** title "Distribution of Mental Health Summary by Diagnosis."it
-  compares the spread and central tendency of a Mental Health Summary Score across four different diagnostic groups.
-  """
+  **Figure 2** This graph is a **Violin Plot** titled "Distribution of Total SF by Type of Family (Nuclear).
+  "It compares the distribution of the Total SF Score (likely a summary function ore health score) 
+  for two groups: participants who are not in a nuclear family (False) and those who are in a nuclear family(True).
+  """ 
 
 fig, ax = plt.subplots(figsize=(10, 6))
 sns.boxplot(x='Diagnosis', y='Mental_Health_Summary', data=df, ax=ax)
