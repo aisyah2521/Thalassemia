@@ -4,11 +4,11 @@ st.set_page_config(
     page_title="Student Survey"
 )
 
-objective1 = st.Page('objective 1.py', title='Objective 1', icon=":material/school:")
+objective1 = st.Page('objective 1.py', title='Objective 1', icon=":material/bar_chart:")
 
-objective2 = st.Page('objective 2.py', title='objective 2', default=True, icon=":material/home:")
+objective2 = st.Page('objective 2.py', title='objective 2', icon=":material/pie_chart:")
 
-objective3 = st.Page('objective 3.py', title='objective 3', icon=":material/home:")
+objective3 = st.Page('objective 3.py', title='objective 3', icon=":material/show_chart:")
 
 pg = st.navigation(
     {
