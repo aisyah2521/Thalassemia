@@ -40,10 +40,6 @@ st.subheader("Data Loaded from GitHub")
 
 if not df.empty:
     st.write(f"Successfully loaded {len(df)} rows and {len(df.columns)} columns.")
-    
-    # Display the DataFrame in an interactive table
-    st.dataframe(df)
-
   # --- DYNAMIC METRICS SECTION ---
     total_respondents = len(df)
     avg_age = df["Age"].mean()
@@ -58,8 +54,10 @@ if not df.empty:
     col3.metric(label="Gender (Male)", value=f"{male_percent:.1f}%")
     col4.metric(label="Gender (Female)", value=f"{female_percent:.1f}%")
     col5.metric(label="Top Blood Transfusion", value=f"{most_common_blood}")
-
-
+    
+    # Display the DataFrame in an interactive table
+    st.dataframe(df)
+  
     # Display some basic information
     st.markdown("---")
     st.subheader("Quick Data Information")
