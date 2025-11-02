@@ -46,3 +46,13 @@ if not df.empty:
     st.write(df.dtypes)
 else:
     st.error("The DataFrame is empty. Please check the URL or file format.")
+
+
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.hist(df['Age_of_Participants'], bins=20, edgecolor='black')
+ax.set_title('Distribution of Age of Participants')
+ax.set_xlabel('Age')
+ax.set_ylabel('Frequency')
+
+st.pyplot(fig)
+
