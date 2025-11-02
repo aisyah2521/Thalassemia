@@ -69,3 +69,7 @@ ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
 
 st.pyplot(fig)
 
+"""
+  **Thalassemia** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
+  the validated SF-36 (Short Form Health Survey) questionnaire.
+  """
