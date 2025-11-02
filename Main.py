@@ -61,10 +61,7 @@ ax.set_ylabel('Frequency')
 st.pyplot(fig)
 
 """
-  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
-scientific data into visual forms that are easier to understand, interpret, and communicate.
-  Through the use of computational techniques, visualization helps researchers explore datasets,
-identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  **Histogram** This graph is a histogram that shows the Distribution of Age Of Participants. 
   """
 
 gender_counts = df['Gender'].value_counts()
@@ -83,10 +80,7 @@ ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 st.pyplot(fig)
 
 """
-  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
-scientific data into visual forms that are easier to understand, interpret, and communicate.
-  Through the use of computational techniques, visualization helps researchers explore datasets,
-identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  **Pie Chart** This graph is a pie chart title "Distribution Of Gender."
   """
 
 
@@ -103,8 +97,6 @@ plt.tight_layout()
 st.pyplot(fig)
 
 """
-  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
-scientific data into visual forms that are easier to understand, interpret, and communicate.
-  Through the use of computational techniques, visualization helps researchers explore datasets,
-identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  **Bar Chart** This graph is a bar chart title "Distribution Of Frequency Of Blood Transfusion.It compares
+  the number of participants (count) falling into three diffrent categories of transfusion frequency.
   """
