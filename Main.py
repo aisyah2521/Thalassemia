@@ -130,47 +130,27 @@ st.title('Gender Distribution Visualization')
 plot_gender_distribution(df)
 
 
-# --- 🧪 Example DataFrame creation (Replace this with your actual data loading) ---
-# This creates a dummy DataFrame for demonstration
-np.random.seed(42)
-transfusion_data = np.random.choice(
-    ['Weekly', 'Monthly', 'Quarterly', 'Annually', 'Never'], 
-    size=200, 
-    p=[0.1, 0.3, 0.25, 0.15, 0.2]
-)
-df = pd.DataFrame({'Frequency_of_Blood_Transfusion': transfusion_data})
-# -----------------------------------------------------------------------------------
+# Example: assuming df is already loaded
+# df = your_dataframe
 
-def plot_transfusion_frequency(data_frame):
-    """Generates and displays the frequency of blood transfusion bar chart in Streamlit."""
-    
-    # 1. Calculate the counts (same logic as your original code)
-    counts = data_frame['Frequency_of_Blood_Transfusion'].value_counts()
-    
-    # 2. Create the Matplotlib figure and axes
-    fig, ax = plt.subplots(figsize=(10, 6))
+st.subheader("💉 Distribution of Frequency of Blood Transfusion")
 
-    # 3. Generate the bar chart on the axes (ax)
-    # Since you used the pandas .plot(kind='bar') method, we'll use ax.bar() 
-    # for better control within the subplots structure.
-    # The counts.index are the labels (x-values), and counts.values are the heights (y-values).
-    ax.bar(counts.index, counts.values, edgecolor='black')
+# Create the Matplotlib figure
+fig, ax = plt.subplots(figsize=(10, 6))
 
-    # 4. Set the title and labels
-    ax.set_title('Distribution of Frequency of Blood Transfusion')
-    ax.set_xlabel('Frequency of Blood Transfusion')
-    ax.set_ylabel('Count')
+# Plot the bar chart
+df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
 
-    # 5. Rotate x-axis labels
-    ax.tick_params(axis='x', rotation=45) 
-    # ax.tick_params() handles both rotation and alignment (ha='right' is default for 45 deg rotation)
+# Set titles and labels
+ax.set_title('Distribution of Frequency of Blood Transfusion')
+ax.set_xlabel('Frequency of Blood Transfusion')
+ax.set_ylabel('Count')
 
-    # 6. Adjust layout and display using st.pyplot()
-    fig.tight_layout() # Equivalent to plt.tight_layout() on the figure object
-    st.pyplot(fig)
+# Rotate x-axis labels
+plt.xticks(rotation=45, ha='right')
 
-# --- 🚀 Streamlit App Execution ---
-st.title('Blood Transfusion Frequency Analysis')
+# Adjust layout
+plt.tight_layout()
 
-# Call the function to display the plot
-plot_transfusion_frequency(df)
+# Display in Streamlit
+st.pyplot(fig)
