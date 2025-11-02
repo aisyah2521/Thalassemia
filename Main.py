@@ -91,3 +91,22 @@ scientific data into visual forms that are easier to understand, interpret, and 
 identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
   """
 
+
+fig, ax = plt.subplots(figsize=(10, 6))
+df['Frequency_of_Blood_Transfusion'].value_counts().plot(
+    kind='bar', edgecolor='black', ax=ax
+)
+ax.set_title('Distribution of Frequency of Blood Transfusion')
+ax.set_xlabel('Frequency of Blood Transfusion')
+ax.set_ylabel('Count')
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+plt.tight_layout()
+
+st.pyplot(fig)
+
+"""
+  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
+scientific data into visual forms that are easier to understand, interpret, and communicate.
+  Through the use of computational techniques, visualization helps researchers explore datasets,
+identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  """
