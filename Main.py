@@ -14,10 +14,8 @@ st.header("Objective 1", divider="gray")
 DATA_URL = "https://raw.githubusercontent.com/aisyah2521/Thalassemia/refs/heads/main/cleaned_thalassemia_qol_data.csv"
 
 """
-  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
-scientific data into visual forms that are easier to understand, interpret, and communicate.
-  Through the use of computational techniques, visualization helps researchers explore datasets,
-identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  **Thalassemia** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
+  the validated SF-36 (Short Form Health Survey) questionnaire.
   """
 
 ## 💾 Load and Cache Data
