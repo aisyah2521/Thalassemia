@@ -66,33 +66,18 @@ st.pyplot(fig)
   illustrating the distribution of the Physical Health Summary Score.
   """
 
-import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
 
-# Assume df is already loaded
-st.write("Columns in your DataFrame:", df.columns.tolist())
+# Create the plot
+fig, ax = plt.subplots(figsize=(12, 8))
+sns.violinplot(x='Occupational_Status', y='Social_Functioning', data=df, ax=ax)
+ax.set_title('Distribution of Social Functioning by Occupational Status')
+ax.set_xlabel('Occupational Status')
+ax.set_ylabel('Social Functioning Score')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
 
-# Clean up column names to avoid mismatch
-df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
-
-# Check if columns exist and have valid data
-if 'type_of_family_nuclear' in df.columns and 'total_sf_score' in df.columns:
-    # Drop missing data (important for violinplot)
-    plot_data = df.dropna(subset=['type_of_family_nuclear', 'total_sf_score'])
-    
-    if plot_data.empty:
-        st.error("❌ The columns exist, but they contain only missing or invalid values.")
-    else:
-        fig, ax = plt.subplots(figsize=(8, 6))
-        sns.violinplot(x='type_of_family_nuclear', y='total_sf_score', data=plot_data, ax=ax)
-        ax.set_title('Distribution of Total SF Score by Type of Family (Nuclear)')
-        ax.set_xlabel('Type of Family (Nuclear)')
-        ax.set_ylabel('Total SF Score')
-        st.pyplot(fig)
-else:
-    st.error("❌ One or both of the columns ('Type_of_Family_Nuclear', 'Total_SF_Score') are missing in your DataFrame.")
+# Display in Streamlit
+st.pyplot(fig)
 
 
 """
