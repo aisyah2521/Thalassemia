@@ -6,9 +6,9 @@ import numpy as np
 import seaborn as sns
 
 st.set_page_config(
-  page_title="Objective 2"
+  page_title="Objective 3"
 )
-st.header("Objective 2", divider="gray")
+st.header("Objective 3", divider="gray")
 
 
 # The raw GitHub URL for the CSV file
@@ -70,6 +70,20 @@ ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle
 st.pyplot(fig)
 
 """
-  **Thalassemia** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
+  **Figure 1** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
   the validated SF-36 (Short Form Health Survey) questionnaire.
   """
+
+numerical_cols = [
+    'Age_of_Participants', 'Role_Physical', 'Bodily_Pain', 'Vitality',
+    'Role_Emotional', 'Social_Functioning', 'Physical_Health_Summary',
+    'Mental_Health_Summary', 'Total_SF_Score'
+]
+
+correlation_matrix = df[numerical_cols].corr()
+
+fig, ax = plt.subplots(figsize=(12, 10))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5, ax=ax)
+ax.set_title('Correlation Matrix of Numerical Variables')
+
+st.pyplot(fig)
