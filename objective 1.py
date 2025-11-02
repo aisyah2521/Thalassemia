@@ -40,20 +40,6 @@ st.subheader("Data Loaded from GitHub")
 
 if not df.empty:
     st.write(f"Successfully loaded {len(df)} rows and {len(df.columns)} columns.")
-  # --- DYNAMIC METRICS SECTION ---
-    total_respondents = len(df)
-    avg_age = df["Age"].mean()
-    male_percent = (df["Gender"].value_counts(normalize=True).get("Male", 0) * 100)
-    female_percent = (df["Gender"].value_counts(normalize=True).get("Female", 0) * 100)
-    most_common_blood = df["Frequency_of_Blood_Transfusion"].mode()[0]
-    unique_blood = df["Frequency_of_Blood_Transfusion"].nunique()
-
-    col1, col2, col3, col4, col5 = st.columns(5)
-    col1.metric(label="Total Respondents", value=total_respondents)
-    col2.metric(label="Average Age", value=f"{avg_age:.1f}")
-    col3.metric(label="Gender (Male)", value=f"{male_percent:.1f}%")
-    col4.metric(label="Gender (Female)", value=f"{female_percent:.1f}%")
-    col5.metric(label="Top Blood Transfusion", value=f"{most_common_blood}")
     
     # Display the DataFrame in an interactive table
     st.dataframe(df)
