@@ -128,3 +128,23 @@ st.title('Gender Distribution Visualization')
 
 # Call the function to display the plot
 plot_gender_distribution(df)
+
+
+# Example: Load your data (replace this with your actual DataFrame)
+# df = pd.read_csv('your_data.csv')
+
+# Streamlit app title
+st.title("Distribution of Frequency of Blood Transfusion")
+
+# Create the plot using Matplotlib
+fig, ax = plt.subplots(figsize=(10, 6))
+df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
+
+ax.set_title('Distribution of Frequency of Blood Transfusion')
+ax.set_xlabel('Frequency of Blood Transfusion')
+ax.set_ylabel('Count')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Display the plot in Streamlit
+st.pyplot(fig)
