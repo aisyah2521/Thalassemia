@@ -53,12 +53,6 @@ if not df.empty:
     st.write(df.dtypes)
 else:
     st.error("The DataFrame is empty. Please check the URL or file format.")
-"""
-  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
-scientific data into visual forms that are easier to understand, interpret, and communicate.
-  Through the use of computational techniques, visualization helps researchers explore datasets,
-identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
-  """
 
 fig, ax = plt.subplots(figsize=(8, 6))
 ax.hist(df['Age_of_Participants'], bins=20, edgecolor='black')
@@ -67,4 +61,11 @@ ax.set_xlabel('Age')
 ax.set_ylabel('Frequency')
 
 st.pyplot(fig)
+
+"""
+  **Scientific Visualization** is a multidisciplinary field that focuses on transforming complex
+scientific data into visual forms that are easier to understand, interpret, and communicate.
+  Through the use of computational techniques, visualization helps researchers explore datasets,
+identify hidden patterns, and gain insights that would otherwise remain obscure in numerical form.
+  """
 
