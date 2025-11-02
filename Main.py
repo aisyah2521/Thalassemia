@@ -61,7 +61,7 @@ ax.set_ylabel('Frequency')
 st.pyplot(fig)
 
 """
-  **Histogram** This graph is a histogram that shows the Distribution of Age Of Participants. 
+  **Figure 1** This graph is a **histogram** that shows the Distribution of Age Of Participants. 
   """
 
 gender_counts = df['Gender'].value_counts()
@@ -80,7 +80,7 @@ ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 st.pyplot(fig)
 
 """
-  **Pie Chart** This graph is a pie chart title "Distribution Of Gender."
+  **Figure 2** This graph is a **pie chart** title "Distribution Of Gender."
   """
 
 
@@ -97,6 +97,6 @@ plt.tight_layout()
 st.pyplot(fig)
 
 """
-  **Bar Chart** This graph is a bar chart title "Distribution Of Frequency Of Blood Transfusion.It compares
+  **Figure 3** This graph is a **bar chart** title "Distribution Of Frequency Of Blood Transfusion.It compares
   the number of participants (count) falling into three diffrent categories of transfusion frequency.
   """
