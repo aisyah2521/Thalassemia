@@ -10,7 +10,7 @@ home = st.Page('objective 2.py', title='Homepage', default=True, icon=":material
 
 pg = st.navigation(
     {
-        "Menu": [Objective, Objective]
+        "Menu": [Objective, Objective comparison]
     }
 )
 
