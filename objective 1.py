@@ -13,25 +13,25 @@ st.header("Objective 1", divider="gray")
 # The raw GitHub URL for the CSV file
 DATA_URL = "https://raw.githubusercontent.com/aisyah2521/Thalassemia/refs/heads/main/thalassemia_qol_data%20(1).csv"
 
+# --- DYNAMIC METRICS SECTION ---
+    st.markdown("### 📈 Key Statistics Overview")
+    try:
+        total_respondents = len(df)
+        avg_age = df["Age_of_Participants"].mean()
+        gender_counts = df["Gender"].value_counts(normalize=True)
+        male_percent = gender_counts.get("Male", 0) * 100
+        female_percent = gender_counts.get("Female", 0) * 100
+        most_common_blood = df["Frequency_of_Blood_Transfusion"].mode()[0]
+        unique_blood = df["Frequency_of_Blood_Transfusion"].nunique()
 
-st.title("Distribution of Frequency of Blood Transfusion")
-
-# Create the Matplotlib figure and axis
-fig, ax = plt.subplots(figsize=(10, 6))
-
-# Plot the bar chart
-df['Frequency_of_Blood_Transfusion'].value_counts().plot(kind='bar', edgecolor='black', ax=ax)
-
-# Set the chart title and labels
-ax.set_title('Distribution of Frequency of Blood Transfusion')
-ax.set_xlabel('Frequency of Blood Transfusion')
-ax.set_ylabel('Count')
-ax.tick_params(axis='x', rotation=45)
-
-# Adjust layout and render in Streamlit
-fig.tight_layout()
-st.pyplot(fig)
-
+        col1, col2, col3, col4, col5 = st.columns(5)
+        col1.metric(label="Total Respondents", value=total_respondents)
+        col2.metric(label="Average Age", value=f"{avg_age:.1f}")
+        col3.metric(label="Gender (Male)", value=f"{male_percent:.1f}%")
+        col4.metric(label="Gender (Female)", value=f"{female_percent:.1f}%")
+        col5.metric(label="Most Common Transfusion", value=most_common_blood)
+    except Exception as e:
+        st.warning(f"⚠️ Unable to compute some metrics: {e}")
 
 """
   *Thalassemia* This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
