@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import pandas as pd
+import numpy as np
 
 st.set_page_config(
   page_title="Objective 1"
@@ -87,3 +88,43 @@ st.title('Participant Age Data Visualization')
 
 # Call the function to display the plot
 plot_age_distribution(df)
+
+
+# --- 🧪 Example DataFrame creation (Replace this with your actual data loading) ---
+# This creates a dummy DataFrame for demonstration since the original code relies on 'df'
+np.random.seed(42)
+data = {'Gender': np.random.choice(['Male', 'Female', 'Other'], size=100, p=[0.45, 0.50, 0.05])}
+df = pd.DataFrame(data)
+# -----------------------------------------------------------------------------------
+
+def plot_gender_distribution(data_frame):
+    """Generates and displays the gender distribution pie chart in Streamlit."""
+    
+    # 1. Calculate the counts (same as your original code)
+    gender_counts = data_frame['Gender'].value_counts()
+    
+    # 2. Create the Matplotlib figure and axes
+    # We use subplots() to explicitly define the figure (fig)
+    fig, ax = plt.subplots(figsize=(8, 8)) 
+
+    # 3. Generate the pie chart on the axes (ax)
+    ax.pie(
+        gender_counts, 
+        labels=gender_counts.index, 
+        autopct='%1.1f%%', 
+        startangle=90, 
+        colors=['skyblue', 'lightcoral', 'lightgreen'] # Added a third color for 'Other'
+    )
+    
+    # 4. Set the title and ensure it's a circle
+    ax.set_title('Distribution of Gender')
+    ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    
+    # 5. Display the figure using st.pyplot()
+    st.pyplot(fig)
+
+# --- 🚀 Streamlit App Execution ---
+st.title('Gender Distribution Visualization')
+
+# Call the function to display the plot
+plot_gender_distribution(df)
