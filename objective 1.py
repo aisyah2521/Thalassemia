@@ -66,6 +66,7 @@ st.pyplot(fig)
 
 gender_counts = df['Gender'].value_counts()
 
+# Create the plot
 fig, ax = plt.subplots(figsize=(8, 8))
 ax.pie(
     gender_counts,
@@ -75,8 +76,9 @@ ax.pie(
     colors=['skyblue', 'lightcoral']
 )
 ax.set_title('Distribution of Gender')
-ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+ax.axis('equal')  # Keeps the pie chart circular
 
+# Display the plot in Streamlit
 st.pyplot(fig)
 
 """
