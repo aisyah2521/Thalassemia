@@ -36,27 +36,6 @@ if not df.empty:
     st.success(f"✅ Successfully loaded {len(df)} rows and {len(df.columns)} columns.")
     st.dataframe(df)
 
-    # --- 🧠 DYNAMIC METRICS SECTION ---
-    st.markdown("### 📈 Key Dataset Insights")
-
-    try:
-        total_respondents = len(df)
-        avg_age = df["Age_of_Participants"].mean()
-        gender_counts = df["Gender"].value_counts(normalize=True)
-        male_percent = gender_counts.get("Male", 0) * 100
-        female_percent = gender_counts.get("Female", 0) * 100
-        most_common_blood = df["Frequency_of_Blood_Transfusion"].mode()[0]
-        unique_blood = df["Frequency_of_Blood_Transfusion"].nunique()
-
-        col1, col2, col3, col4, col5 = st.columns(5)
-        col1.metric(label="🧍 Total Respondents", value=total_respondents)
-        col2.metric(label="🎂 Average Age", value=f"{avg_age:.1f} years")
-        col3.metric(label="♂️ Male", value=f"{male_percent:.1f}%")
-        col4.metric(label="♀️ Female", value=f"{female_percent:.1f}%")
-        col5.metric(label="💉 Most Common Transfusion", value=most_common_blood)
-    except Exception as e:
-        st.warning(f"⚠️ Unable to compute some metrics: {e}")
-
     # --- BASIC DATA INFO ---
     st.markdown("---")
     st.subheader("Quick Data Information")
