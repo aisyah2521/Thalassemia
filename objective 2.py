@@ -66,30 +66,4 @@ st.pyplot(fig)
   the validated SF-36 (Short Form Health Survey) questionnaire.
   """
 
-fig, ax = plt.subplots(figsize=(8, 6))
-sns.violinplot(x='Type_of_Family_Nuclear', y='Total_SF_Score', data=df_encoded, ax=ax)
-ax.set_title('Distribution of Total SF Score by Type of Family (Nuclear)')
-ax.set_xlabel('Type of Family (Nuclear)')
-ax.set_ylabel('Total SF Score')
 
-st.pyplot(fig)
-
-"""
-  **Thalassemia** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
-  the validated SF-36 (Short Form Health Survey) questionnaire.
-  """
-
-fig, ax = plt.subplots(figsize=(10, 6))
-sns.boxplot(x='Diagnosis', y='Mental_Health_Summary', data=df, ax=ax)
-ax.set_title('Distribution of Mental Health Summary by Diagnosis')
-ax.set_xlabel('Diagnosis')
-ax.set_ylabel('Mental Health Summary')
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
-plt.tight_layout()
-
-st.pyplot(fig)
-
-"""
-  **Thalassemia** This dataset presents comprehensive health-related quality of life (HRQoL) metrics collected from thalassemia patients in Bangladesh using 
-  the validated SF-36 (Short Form Health Survey) questionnaire.
-  """
