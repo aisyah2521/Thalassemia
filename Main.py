@@ -174,5 +174,3 @@ st.title('Blood Transfusion Frequency Analysis')
 
 # Call the function to display the plot
 plot_transfusion_frequency(df)
-
-this is my codding
