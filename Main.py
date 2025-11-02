@@ -109,3 +109,29 @@ elif choice == "Blood Transfusion Frequency":
     plot_transfusion_frequency(df)
 
 
+st.title("Distribution of Gender")
+
+# Calculate gender counts
+gender_counts = df['Gender'].value_counts()
+
+# Create a Matplotlib figure and axis
+fig, ax = plt.subplots(figsize=(8, 8))
+
+# Plot the pie chart
+ax.pie(
+    gender_counts,
+    labels=gender_counts.index,
+    autopct='%1.1f%%',
+    startangle=90,
+    colors=['skyblue', 'lightcoral']
+)
+
+# Set title and make it circular
+ax.set_title('Distribution of Gender')
+ax.axis('equal')  # Ensures the pie is drawn as a circle
+
+# Display the plot in Streamlit
+st.pyplot(fig)
+
+
+
